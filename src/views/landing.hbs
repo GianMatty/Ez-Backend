@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<body>
+    <div class="body2">
+        <div class="jumbotron">
+      <div class="container">
+          <div class="row creative">
+            <div class="col runner"></div>
+          </div>
+          <div class="row copy">
+              <div class="col">
+                <h1>EZBackend</h1>
+                <h3>REST API para tu base de datos</h3>
+                <p>Para de perder tiempo creando APIs para tus aplicaciones.<br> Con EZBackend, tu API estará lista en un día — y puedes volver a enfocarte en tu producto.</p>
+                <a href="/signup" style="color: white;" class="btn btn-success btn-lg" role="button">Regístrate</a>
+                <a href="/demo" style="color: white;" class="btn btn-info btn-lg" role="button" target="_blank">Demo</a>
+              </div>
+          </div>
+      </div>
+        </div>
+
+    <div class="container onetwothree">
+        <h2>Tan EZ como 1, 2, 3</h2><br>
+        <div class="row">
+          <div class="col-md-4">
+            <h3>Define tu esquema</h3>
+            <p>Usa todo el poder de PostgreSQL para definir tu esquema. Vistas, funciones, triggers, extensiones de lenguajes, todo funciona. »</p>
+            <pre class="  language-sql"><code class="  language-sql">
+create table proyectos (
+  id         serial  primary key,
+  nombre     text    not null,
+  manager_id int,
+  check (length(nombre)>2)
+);
+            </code></pre>
+          </div>
+          <div class="col-md-4">
+            <h3>Asigna privilegios</h3>
+            <p>Aprovecha el curtido en mil batallas RBAC/RLS de PostgreSQL para definir permisos flexibles y granulares de una forma concisa. »</p>
+            <pre class="language-sql"><code class="language-sql">
+grant select on proyectos to managers;
+
+create policy manager_proyectos_policy
+for select on proyectos to managers
+using (request.user_id()=manager_id);
+            </code></pre>
+          </div>
+          <div class="col-md-4">
+            <h3>Haz la petición</h3>
+            <p>Usa la REST API generada para construir apps más rápido de lo que creíste posible, con cualquier tecnología frontend. »</p>
+            <pre class="language-graphql"><code>
+curl -G dominio.ezbackend.com/proyectos \
+  -d select=id,nombre \
+  -d nombre=like.ezbackend
+            </code></pre>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="container features performance">
+        <h3>Performance</h3>
+        <div class="row">
+          <div class="col copy">
+              <h2>Rápido y Ligero.</h2>
+              500 peticiones por segundo en instancias t2.micro de AWS, con latencias en el rango de 5 ms — 20 ms.<br>
+              <b>Para poner eso en perspectiva. Estás obteniendo 1.3 billones de peticiones por mes en un hardware de $20 dólares.</b>
+          </div>
+          <div class="col">
+              <ul>
+                  <li>Multi-core desde el arranque</li>
+                  <li>Diseñado para soportar alto tráfico con bajo consumo de memoria.</li>
+                  <li>Peticiones de cualquier complejidad son transformadas a una sola sentencia SQL</li>
+                  <li>No se usan ORMs. No existe el problema N + 1.</li>
+              </ul>
+          </div>
+        </div>
+    </div>
+
+    <div class="container features flexibility">
+        <h3>Flexibilidad</h3>
+        <div class="row">
+          <div class="col copy">
+              <h2>Con un gran poder viene una gran flexiblidad.</h2>
+              Obtienes un API muy flexible con documentación autogenerada a partir de tu esquema de base de datos y con la posibilidad de customizarlo libremente con tu propio código.
+          </div>
+          <div class="col">
+              <ul>
+                  <li>API REST flexible</li>
+                  <li>Documentación auto-generada con OpenAPI</li>
+                  <li>Todo el poder de PostgreSQL, PostGIS, pgRouting, Timescale.</li>
+                  <li>Customizable con SQL, pgSQL, Javascript, Python y R a nivel de la base de datos.</li>
+              </ul>
+          </div>
+        </div>
+    </div>
+
+    <div class="container features safety">
+        <h3>Seguridad</h3>
+        <div class="row">
+          <div class="col copy">
+              <h2>Seguro por defecto.</h2>
+              Por virtud de diseño, toda una clase de ataques y malas configuraciones no son posibles. Se tiene que explicitamente asignar privilegios para que las tablas sean accessibles a través del API.
+          </div>
+          <div class="col">
+              <ul>
+                  <li>Usa una cuenta sin privilegios para conectarse a la base de datos</li>
+                  <li>Sentencias preparadas para todo</li>
+                  <li>Flexible y granular sistema de privilegios</li>
+                  <li>Pooling de conexiones</li>
+              </ul>
+          </div>
+        </div>
+    </div>
+
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col">
+          <p>
+            © 2019 EZBackend
+          </p>
+        </div>
+        <!--<div class="col-3">-->
+            <!--<ul class="">-->
+                <!--<li><a href="https://subzero.cloud/">Home</a></li>-->
+                <!--<li><a href="https://docs.subzero.cloud/">Documentation</a></li>-->
+                <!--<li><a href="https://demo.subzero.cloud/">Demo</a></li>-->
+                <!--<li><a href="https://github.com/subzerocloud">GitHub</a></li>-->
+             <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="col-3">-->
+            <!--<ul class="">-->
+                <!--<li><a href="https://app.subzero.cloud/">Go to App</a></li>-->
+                <!--<li><a href="https://subzero.cloud/pricing.html">Pricing</a></li>-->
+                <!--<li><a href="https://subzero.cloud/contact.html">Contact</a></li>-->
+                <!--<li><a href="https://slack.subzero.cloud/">Slack Channel</a></li>-->
+              <!--</ul>-->
+        <!--</div>-->
+      </div>
+      </div>
+    </footer>
+    </div>
+</body>
+</html>
